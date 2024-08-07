@@ -10,7 +10,7 @@ let menu = `*Tienes mas dudas con las que podamos ayudarte? 🤔*
 - *A)* Desayuno 🥐☕
 - *B)* Pet Friendly 🐕🐈
 - *C)* Promos
-- *D)* Quiero saber disponibilidad
+- *D)* Quiero saber la disponibilidad 📅 (Hablar con una persona) disponibilidad
 - *E)* Volver al inicio 🏠`;
 
 let infoHabitacion = [

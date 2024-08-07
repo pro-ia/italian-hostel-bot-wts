@@ -11,7 +11,7 @@ let menu = `
 - *A)* Quiero más información
 - *B)* precios
 - *C)* Promos
-- *D)* Quiero saber disponibilidad
+- *D)* Quiero saber la disponibilidad 📅 (Hablar con una persona) disponibilidad
 - *E)* Volver al inicio 🏠`;
 
 let infoHabitacion = [

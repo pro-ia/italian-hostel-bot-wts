@@ -9,7 +9,7 @@ let menu = `*Tienes mas dudas con las que podamos ayudarte? 🤔*
 
 - *A)* Quiero mas información
 - *B)* Volver 👛
-- *C)* Quiero saber disponibilidad 
+- *C)* Quiero saber la disponibilidad 📅 (Hablar con una persona) disponibilidad 
 - *D)* Precios temporada alta invierno 🏠`;
 
 let infoHabitacion = [

@@ -6,7 +6,7 @@ import derivacionFlow from "../derivacion/derivacion.flow.js";
 
 let menu = `*Tienes mas dudas con las que podamos ayudarte? 🤔*
 
-- *A)* Quiero saber la disponibilidad de la habitación individual 📅
+- *A)* Quiero saber la disponibilidad 📅 (Hablar con una persona) la disponibilidad 📅 (Hablar con una persona)
 - *B)* Promos 🎁
 - *C)* Menu precios 👛 
 - *D)* Menu principal 🏠`;
