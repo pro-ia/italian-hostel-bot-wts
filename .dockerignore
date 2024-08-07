@@ -1,0 +1,10 @@
+node_modules
+bot_sessions
+.env
+bot.qr.png
+db.json
+queue.class.log
+.vscode
+.gitignore
+baileys.log
+README.MD

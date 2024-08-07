@@ -1,16 +1,14 @@
 import BotWhatsapp from "@bot-whatsapp/bot";
 import preciosFlow from "../precios/precios.flow.js";
-import infoTemporada from "../precios/temporada.flow.js";
+// import infoTemporada from "../precios/temporada.flow.js";
 import informacionFlow from "../informacion/informacion.flow.js";
 import derivacionFlow from "../derivacion/derivacion.flow.js";
-
 
 let menu = `*Tienes mas dudas con las que podamos ayudarte? 🤔*
 
 - *A)* Quiero mas información
 - *B)* Volver 👛
-- *C)* Quiero saber disponibilidad 
-- *D)* Precios temporada alta invierno 🏠`;
+- *C)* Quiero saber disponibilidad`;
 
 let infoHabitacion = [
   `Se encuentra en planta alta, cuentan con calefacción por radiadores. La ropa de cama esta incluida exceptuando toallon.`,
@@ -19,35 +17,33 @@ let infoHabitacion = [
 ];
 
 export default BotWhatsapp.addKeyword(BotWhatsapp.EVENTS.WELCOME)
+  .addAnswer(`*Habitación privada simple:*`, {}, async (ctx, ctxfn) => {
+    await ctxfn.flowDynamic(infoHabitacion);
+  })
   .addAnswer(
-    `*Habitación privada simple:*`,
-    {},
-    async (ctx, ctxfn) => {
-      await ctxfn.flowDynamic(infoHabitacion);
-    }
-  )
-  .addAnswer(
-    `(cama simple): $22.000 o $21.000 en efectivo.`,
+    `(cama simple): $25.000.`,
     {
       capture: true,
     },
     async (ctx, { gotoFlow, fallBack, flowDynamic }) => {
-      if (!["A", "B", "C", "D"].includes(ctx.body)) {
+      if (!["A", "B", "C", "a", "b", "c"].includes(ctx.body)) {
         return await fallBack(`Por favor selecciona una de las opciones
         ${menu}`);
       }
-      switch (ctx.body) {
-        case "A":
-          return await gotoFlow(informacionFlow);
-
-        case "B":
-          return await gotoFlow(preciosFlow);
-
-        case "C":
-          return await gotoFlow(derivacionFlow);
-
-        case "D":
-          return await gotoFlow(infoTemporada);
+      if (ctx.body == "A" || ctx.body == "a") {
+        return await gotoFlow(informacionFlow);
       }
+
+      if (ctx.body == "B" || ctx.body == "b") {
+        return await gotoFlow(preciosFlow);
+      }
+
+      if (ctx.body == "C" || ctx.body == "c") {
+        return await gotoFlow(derivacionFlow);
+      }
+
+      // if (ctx.body == "D" || ctx.body == "d") {
+      //   return await gotoFlow(infoTemporada);
+      // }
     }
   );

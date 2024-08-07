@@ -1,6 +1,6 @@
 import BotWhatsapp from "@bot-whatsapp/bot";
 import preciosFlow from "../precios/precios.flow.js";
-import infoTemporada from "../precios/temporada.flow.js";
+// import infoTemporada from "../precios/temporada.flow.js";
 import informacionFlow from "../informacion/informacion.flow.js";
 import derivacionFlow from "../derivacion/derivacion.flow.js";
 
@@ -27,27 +27,31 @@ export default BotWhatsapp.addKeyword(BotWhatsapp.EVENTS.WELCOME)
     }
   )
   .addAnswer(
-    `Habitación privada doble (cama matrimonial o dos camas simples): $36.000 o $35.000 en efectivo.`,
+    `Habitación privada doble (cama matrimonial o dos camas simples): $45.000.`,
     {
       capture: true,
     },
     async (ctx, { gotoFlow, fallBack, flowDynamic }) => {
-      if (!["A", "B", "C", "D"].includes(ctx.body)) {
+      if (!["A", "B", "C", "a", "b", "c"].includes(ctx.body)) {
         return await fallBack(`Por favor selecciona una de las opciones
         ${menu}`);
       }
-      switch (ctx.body) {
-        case "A":
-          return await gotoFlow(informacionFlow);
 
-        case "B":
-          return await gotoFlow(preciosFlow);
-
-        case "C":
-          return await gotoFlow(derivacionFlow);
-
-        case "D":
-          return await gotoFlow(infoTemporada);
+      if (ctx.body == "A" || ctx.body == "a") {
+        return await gotoFlow(informacionFlow);
       }
+
+      if (ctx.body == "" || ctx.body == "b") {
+        return await gotoFlow(preciosFlow);
+    }
+
+      if (ctx.body == "C" || ctx.body == "c") {
+        return await gotoFlow(derivacionFlow);
+      }
+
+      // if (ctx.body == "D" || ctx.body == "d") {
+      //   return await gotoFlow(infoTemporada);
+      // }
+
     }
   );

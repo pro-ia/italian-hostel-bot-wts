@@ -7,7 +7,6 @@ import preciosIndividualFlow from "./precios/indivudual.flow.js";
 import singleFlow from "./precios/single.flow.js";
 import dobleFlow from "./precios/doble.flow.js";
 import tripleFlow from "./precios/triple.flow.js";
-import infoTemporada from "./precios/temporada.flow.js";
 import informacionFlow from "./informacion/informacion.flow.js";
 import desayunoFlow from "./informacion/desayuno.flow.js";
 import petFlow from "./informacion/pet.flow.js"
@@ -22,7 +21,6 @@ export default BotWhatsapp.createFlow([
   singleFlow,
   dobleFlow,
   tripleFlow,
-  infoTemporada,
   informacionFlow,
   desayunoFlow,
   petFlow,

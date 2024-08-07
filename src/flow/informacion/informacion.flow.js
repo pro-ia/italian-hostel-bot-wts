@@ -5,7 +5,6 @@ import petFlow from "../informacion/pet.flow.js";
 import promoFlow from "../promo/promo.flow.js";
 import derivacionFlow from "../derivacion/derivacion.flow.js";
 
-
 let menu = `*Tienes mas dudas con las que podamos ayudarte? 🤔*
 
 - *A)* Desayuno 🥐☕
@@ -36,25 +35,31 @@ export default BotWhatsapp.addKeyword(BotWhatsapp.EVENTS.WELCOME)
       capture: true,
     },
     async (ctx, { gotoFlow, fallBack, flowDynamic }) => {
-      if (!["A", "B", "C", "D", "E"].includes(ctx.body)) {
+      if (
+        !["A", "B", "C", "D", "E", "a", "b", "c", "d", "e"].includes(ctx.body)
+      ) {
         return await fallBack(`Por favor selecciona una de las opciones
       ${menu}`);
       }
-      switch (ctx.body) {
-        case "A":
-          return await gotoFlow(desayunoFlow);
 
-        case "B":
-          return await gotoFlow(petFlow);
+      if (ctx.body == "A" || ctx.body == "a") {
+        return await gotoFlow(desayunoFlow);
+      }
 
-        case "C":
-          return await gotoFlow(promoFlow);
+      if (ctx.body == "B" || ctx.body == "b") {
+        return await gotoFlow(petFlow);
+      }
 
-        case "D":
-          return await gotoFlow(derivacionFlow);
+      if (ctx.body == "C" || ctx.body == "c") {
+        return await gotoFlow(promoFlow);
+      }
 
-        case "E":
-          return await gotoFlow(helloFlow);
+      if (ctx.body == "D" || ctx.body == "d") {
+        return await gotoFlow(derivacionFlow);
+      }
+
+      if (ctx.body == "E" || ctx.body == "e") {
+        return await gotoFlow(helloFlow);
       }
     }
   );

@@ -21,22 +21,27 @@ export default BotWhatsapp.addKeyword(BotWhatsapp.EVENTS.WELCOME)
       capture: true,
     },
     async (ctx, { gotoFlow, fallBack, flowDynamic }) => {
-      if (!["A", "B", "C", "D"].includes(ctx.body)) {
+      if (!["A", "B", "C", "D", "a", "b", "c", "d"].includes(ctx.body)) {
         return await fallBack(`Por favor selecciona una de las opciones
         ${menu}`);
       }
-      switch (ctx.body) {
-        case "A":
-          return await gotoFlow(singleFlow);
-
-        case "B":
-          return await gotoFlow(dobleFlow);
-
-        case "C":
-          return await gotoFlow(tripleFlow);
-
-        case "D":
-          return await gotoFlow(preciosFlow);
+    
+      if (ctx.body == "A" || ctx.body == "a") {
+        return await gotoFlow(singleFlow);
       }
+
+      if (ctx.body == "B" || ctx.body == "b") { 
+        return await gotoFlow(dobleFlow);
+      }
+
+      if (ctx.body == "C" || ctx.body == "c") {
+        return await gotoFlow(tripleFlow);
+      }
+
+      if (ctx.body == "D" || ctx.body == "d") {
+        return await gotoFlow(preciosFlow);
+      }
+    
+    
     }
   );
